@@ -1,7 +1,5 @@
 package com.moon.quizsnack
 
-import android.content.Intent
-import android.graphics.Color.green
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -11,15 +9,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.*
-import com.google.android.gms.ads.rewarded.RewardItem
-import com.google.android.gms.ads.rewarded.RewardedAd
-import com.google.android.gms.ads.rewarded.RewardedAdCallback
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.moon.quizsnack.data.Item
 import com.moon.quizsnack.databinding.ActivityWordBinding
 import java.util.*
@@ -166,22 +159,6 @@ class WordActivity : AppCompatActivity() {
                     .show()
             }
         }
-    }
-
-    private fun createAndLoadRewardedAd(): RewardedAd {
-        val rewardedAd = RewardedAd(this, "ca-app-pub-3578188838033823/7077699965")
-        val adLoadCallback = object : RewardedAdLoadCallback() {
-            override fun onRewardedAdLoaded() {
-                // Ad successfully loaded.
-                binding.adsVideo.isEnabled = true
-            }
-
-            override fun onRewardedAdFailedToLoad(adError: LoadAdError) {
-                // Ad failed to load.
-            }
-        }
-        rewardedAd.loadAd(AdRequest.Builder().build(), adLoadCallback)
-        return rewardedAd
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
